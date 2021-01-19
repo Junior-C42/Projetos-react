@@ -1,114 +1,122 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+// import-area:
+import React, {useState} from 'react'; 
+import { 
+  StyleSheet, 
+  View, 
+  Text, 
+  TextInput,
+  Button } from 'react-native'; 
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+// render-area:
+export default () => {
+  
+  const [ email, setEmail ] = useState(''); 
+  const [ password, setPassword ] = useState(''); 
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+  const [ status, setStatus] = useState(''); 
+  const [ showCupom, setShowCupom ] = useState(false); 
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+  const handleVerifyLogin = async () => {
+    setStatus(''); 
+    setShowCupom(false); 
 
+    const req = await fetch('https://api.b7web.com.br/loginsimples/', {
+      method:'POST', 
+      body:JSON.stringify({email, password}),
+      headers:{
+        'Content-Type':'application/json'
+      }
+    }); 
+    const json = await req.json(); 
+
+    if(json.status == 'ok'){
+      setStatus('Acesso LIBERADO!'); 
+      setShowCupom(true); 
+    } else { 
+      setStatus('Acesso NEGADO!'); 
+      setShowCupom(false); 
+    }
+  }; 
+
+  return(
+    <View style={styles.container}>
+      <Text style={styles.header}>Desconto UltraBlaster</Text>
+      
+
+      <TextInput 
+        placeholder="Digite seu e-mail"
+        style={styles.input}
+        value={email}
+        onChangeText={(t)=>{setEmail(t)}}
+      />
+      
+      <TextInput 
+        placeholder="Digite sua senha"
+        style={styles.input}
+        value={password}
+        onChangeText={(t)=>{setPassword(t)}}
+        secureTextEntry={true}
+      />
+
+      <Button 
+        title="Verificar"
+        onPress={handleVerifyLogin}
+      />
+
+      <Text style={styles.status}>{status}</Text>
+
+      {showCupom &&
+        <View style={styles.cupomArea}>
+          <Text style={styles.cupomTitle} >Código de Cupom:</Text>
+          <Text style={styles.cupomCode}>JAHRK123</Text>
+        </View>
+      }
+    </View>
+  );  
+}; 
+
+// styled-area:
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  container:{
+    flex:1, 
+    backgroundColor:'#333', 
+    padding:20
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
-
-export default App;
+  header:{
+    color:'#fff', 
+    fontSize:25,
+    textAlign:'center', 
+    marginBottom:30
+  }, 
+  input:{
+    height:45,
+    fontSize:18,
+    color:'#fff', 
+    backgroundColor:'#555', 
+    borderRadius:5,
+    marginBottom:20,
+    paddingLeft:10, 
+    paddingRight:10
+  }, 
+  status:{
+    margin:50,
+    color:'#fff', 
+    fontSize:18, 
+    textAlign:'center'
+  }, 
+  cupomArea:{
+    backgroundColor:'#fff', 
+    borderRadius:5, 
+    padding:30
+  }, 
+  cupomTitle:{
+    fontSize:18, 
+    textAlign:'center', 
+    marginBottom:20
+  }, 
+  cupomCode:{
+    textAlign:'center', 
+    fontSize:40, 
+    fontWeight:'bold'
+  }
+}); 
