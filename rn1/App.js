@@ -1,33 +1,36 @@
-//import-area:
-import React from 'react'; 
+// import-area:
+import React, { useEffect, useState } from 'react'; 
+import { StatusBar } from 'react-native'; 
 import styled from 'styled-components/native'; 
 
-//render-area:
-export default function(){
+// render-area:
+export default () => {
+  
+  const [ hidden, setHidden ] = useState(false); 
+  useEffect(()=>{
+    
+  }, [])
   return(
     <Page>
-      <Input placeholder="Qual seu nome?" />
+      <Botao
+        title="Toggle StatusBar"
+        onPress={ ()=>{setHidden(!hidden)} }
+      />
+      <StatusBar 
+        barStyle='higth-content' 
+        backgroundColor='#0000ff'
+        hidden={hidden}
+      />
     </Page>
   ); 
 }; 
 
-//styled-area:
-
+// styled-ara:
 const Page = styled.View`
   flex:1; 
-  background-color:#fff; 
-  align-items:center; 
+  justify-content:center; 
+  align-items:center;
+  background-color:#0000ff; 
 `; 
-
-const Input = styled.TextInput`
-  font-size:15px; 
-  border:1px solid #000; 
-  height:50px; 
-  width:90%;
-  padding:10px; 
-  margin-top:20px; 
-  border-radius:5px;
-`; 
-
-const Salvar = styled.Button`
+const Botao = styled.Button`
 `; 
