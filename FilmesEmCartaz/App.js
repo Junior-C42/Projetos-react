@@ -1,6 +1,13 @@
 // import-area:
 import React, {useState, useEffect} from 'react'; 
-import { View, StyleSheet, Text, Button, FlatList, Image, ActivityIndicator } from 'react-native'; 
+import {
+  View, 
+  StyleSheet, 
+  Text, 
+  Button, 
+  FlatList, 
+  Image, 
+  ActivityIndicator } from 'react-native'; 
 
 // render-area:
 export default () => {
