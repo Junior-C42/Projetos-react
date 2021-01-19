@@ -1,18 +1,10 @@
 // import-area:
-import React, { useState } from 'react'; 
-import { View, StyleSheet } from 'react-native'; 
+import { createAppContainer } from 'react-navigation'; 
+import { createStackNavigator } from 'react-navigation-stack';
+
+import MainNavigator from './src/navigators/MainNavigator';
+
 
 // render-area:
-export default () => {
-  return(
-    <View style={styles.container}>
-
-    </View>
-  ); 
-}; 
+export default createAppContainer(MainNavigator); 
 // styled-area:
-const styles = StyleSheet.create({
-  container:{
-    flex:1,
-  }, 
-})
