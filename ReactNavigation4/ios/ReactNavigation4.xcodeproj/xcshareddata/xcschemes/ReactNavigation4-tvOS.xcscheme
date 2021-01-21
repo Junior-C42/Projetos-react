@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "ReactNavigation4-tvOS.app"
-               BlueprintName = "ReactNavigation4-tvOS"
-               ReferencedContainer = "container:ReactNavigation4.xcodeproj">
+               BuildableName = "reactNavigation4-tvOS.app"
+               BlueprintName = "reactNavigation4-tvOS"
+               ReferencedContainer = "container:reactNavigation4.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "ReactNavigation4-tvOSTests.xctest"
-               BlueprintName = "ReactNavigation4-tvOSTests"
-               ReferencedContainer = "container:ReactNavigation4.xcodeproj">
+               BuildableName = "reactNavigation4-tvOSTests.xctest"
+               BlueprintName = "reactNavigation4-tvOSTests"
+               ReferencedContainer = "container:reactNavigation4.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "ReactNavigation4-tvOS.app"
-            BlueprintName = "ReactNavigation4-tvOS"
-            ReferencedContainer = "container:ReactNavigation4.xcodeproj">
+            BuildableName = "reactNavigation4-tvOS.app"
+            BlueprintName = "reactNavigation4-tvOS"
+            ReferencedContainer = "container:reactNavigation4.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "ReactNavigation4-tvOS.app"
-            BlueprintName = "ReactNavigation4-tvOS"
-            ReferencedContainer = "container:ReactNavigation4.xcodeproj">
+            BuildableName = "reactNavigation4-tvOS.app"
+            BlueprintName = "reactNavigation4-tvOS"
+            ReferencedContainer = "container:reactNavigation4.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
