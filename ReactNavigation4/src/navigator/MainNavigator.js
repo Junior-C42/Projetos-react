@@ -14,6 +14,7 @@ const MainNavigator = createStackNavigator({
     }
 }, {
     initialRouteName:'Login', 
+    headerMode:false
 }); 
 
 export default MainNavigator; 
