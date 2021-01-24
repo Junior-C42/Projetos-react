@@ -1,0 +1,20 @@
+drawerPosition:'left',
+    drawerType:'front',
+    // drawerWidth:80,
+    edgeWidth:200, 
+    hideStatusBar:true, 
+    statusBarAnimation:false, 
+    overlayColor:0,
+    contentOptions:{
+        activeTintColor:'#eee', 
+        activeBackgroundColor:'#003366',
+        inactiveTintColor:'#ff0000', 
+        itemStyle:{
+            height:100
+        }, 
+        labelStyle:{
+            fontSize:19
+        }
+    }
+
+    opções de configuração do drawer dentro do navigation.

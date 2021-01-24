@@ -1,27 +1,34 @@
 import React from 'react'; 
+import TabBarIcon from '../components/TabBarIcon'; 
 import { 
     View, 
     Text, 
     StyleSheet,
-    TouchableHighlight} from 'react-native'; 
+    Button
+} from 'react-native'; 
+import { StackActions, NavigationActions } from 'react-navigation'
 
 const Login = ( props ) => {
+
+    const handleLogin = () => {
+        
+        const resetAction = StackActions.reset({
+            index:0,
+            actions:[
+                NavigationActions.navigate({routeName:'HomeTab'})
+            ]
+        });
+
+        props.navigation.dispatch(resetAction);         
+    }; 
+
     return(
         <View style={styles.container}>
 
-           <View style={styles.containerTxt}>
+            <View style={styles.containerTxt}>
                <Text style={styles.txt}>LOGIN SCREEN</Text>
-           </View>
-
-            <TouchableHighlight
-                activeOpacity={0.6}
-                underlayColor="#003355"
-                onPress={ ()=> props.navigation.navigate('Welcome') }
-                style={styles.button}
-            >
-                <Text style={styles.buttonTxt}>Login</Text>
-            </TouchableHighlight>
-
+                <Button title="Fazer Login" onPress={handleLogin}/>        
+            </View>
         </View>
     ); 
 }; 
@@ -29,7 +36,7 @@ const Login = ( props ) => {
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        justifyContent:'center',
+        justifyContent:'space-around',
         alignItems:'center'
     },
     containerTxt:{
@@ -40,29 +47,12 @@ const styles = StyleSheet.create({
     }, 
     txt:{
         fontSize:22,
-        marginTop:20
-    },
-    button:{
-        backgroundColor:"#003366",
-        padding:20,
-        borderRadius:50, 
-        width:'80%', 
-        justifyContent:'center', 
-        alignItems:'center',
-        marginTop:10,
-        marginBottom:20
-    }, 
-    buttonTxt:{
-        color:'#fff', 
-        fontWeight:'bold', 
-        fontSize:15,
-        textTransform:'uppercase'
     }
 }); 
 
 Login.navigationOptions = () => {
     return {
-       title:'Fazer Login',
+       title:'Login'
     };
 }; 
 

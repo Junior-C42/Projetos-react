@@ -3,21 +3,16 @@ import {
     View, 
     Text, 
     StyleSheet,
-    TextInput, 
-    Button
+    TouchableOpacity
 } from 'react-native'; 
 
-const Welcome = ( props ) => {
 
-    const [ nome, setNome ] = useState(''); 
+const Welcome = ( props ) => {
 
     return(
         <View style={styles.container}>
 
-            <Button 
-                title='Volta para a tela de Login' 
-                onPress={e=>{props.navigation.goBack()}}
-            />
+            <Text style={styles.txt}>Welcome</Text>
             
         </View>
     ); 
@@ -40,12 +35,16 @@ const styles = StyleSheet.create({
         borderRadius:5, 
         paddingLeft:25,
         fontSize:15
+    }, 
+    img:{
+        width:30, 
+        height:30, 
     }
 }); 
 
-Welcome.navigationOptions = ({navigation}) => {
+Welcome.navigationOptions = ({navigation}) => { 
     return { 
-        
+        title:'Welcome'
     }
 }; 
 
