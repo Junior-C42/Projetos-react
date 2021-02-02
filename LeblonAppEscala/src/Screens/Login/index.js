@@ -1,6 +1,4 @@
 import React, {useState} from 'react'; 
-// import {Text, Alert} from 'react-native'; 
-import { StackActions, NavigationActions } from 'react-navigation'; 
 import { ContainerView, LogoArea, ImageArea, InputArea } from './style'; 
 import BusLogo from '../../Assets/images/BusStop2.svg'; 
 import LoginLogo from '../../Assets/images/loginLogo2.svg'; 
@@ -13,20 +11,14 @@ const Login = ( props ) => {
 
     const [id, setId] = useState(''); 
     const [passWord, setPassWord] = useState('');  
-    const [isAuthenticated, setIsAuthenticated] = useState(''); 
+    
     const handleLogin = () => {
        if(id != '' && passWord != ''){
-        
-        if(id === '22383' && passWord === '141019'){
-               
-            const resetAction = StackActions.reset({
-                index:0,
-                actions:[
-                    NavigationActions.navigate({routeName:'HomeTab'})
-                ]
-            })
-            props.navigation.dispatch(resetAction);
-
+            if(id === '22383' && passWord === '141019'){
+               props.navigation.reset({
+                   index:0,
+                   routes:[{name:'HomeTab'}],
+               });
            } else {
             
            console.log('errou')
@@ -38,6 +30,7 @@ const Login = ( props ) => {
         console.log('errou')
 
        }; 
+
     }; 
 
     return(

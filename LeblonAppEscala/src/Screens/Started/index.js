@@ -1,5 +1,4 @@
 import React from 'react'; 
-import { StackActions, NavigationActions } from 'react-navigation';
 import { Container, LogoArea, ImageArea, ButtonArea } from './style'; 
 import TimeLogo from '../../Assets/images/TimeLogo.svg'; 
 import TextLogo from '../../Assets/images/TextLogo.svg'; 
@@ -8,13 +7,12 @@ import Button from '../../Components/Button';
 const Started = (props) => {
     
     const handleButton = () => {
-        const resetAction = StackActions.reset({
-            index:0, 
-            actions:[
-                NavigationActions.navigate({routeName:'Login'})
-            ]
-        }); 
-        props.navigation.dispatch(resetAction); 
+        
+        props.navigation.reset({
+            index:0,
+            routes:[{name:'Login'}],
+        });
+        
     }
 
     return(

@@ -1,71 +1,51 @@
 import React from 'react'; 
 import styled from 'styled-components/native'; 
+import ProfileIcon from '../Assets/icons/profileIcon.svg'; 
+import ScheduleIcon from '../Assets/icons/scheduleIcon2.svg'; 
+import ConfigIcon from '../Assets/icons/configIcon.svg'; 
 
-
-const CustomTabBar = ( props ) => {
+const CustomTabBar = ({ state, navigation }) => {
+    
+    const goTo = (screenName) => {
+        navigation.navigate(screenName);
+    }; 
 
     return(
-        <TabBarArea>
-            {props.items.map(item=>(
-                <TabBarItem key={item.route} >
-
-                    {item.type == 'regular' &&
-                        <TabRegular underlayColor="transparent" onPress={()=>{props.navigation.navigate(item.route)}      
-                        }>
-                            <>
-                                <TabIconView>{item.icon}</TabIconView>
-                                <Text>{item.text}</Text>
-                            </>
-                        </TabRegular>
-                    }
-
-                    {item.type == 'big' &&
-                        <TabIconArea underlayColor='#003366' onPress={()=>props.navigation.navigate(item.route)}>
-                            <TabIcon>{item.icon}</TabIcon>
-                        </TabIconArea>
-                    }
-
-                </TabBarItem>
-            ))}
-        </TabBarArea>
+       <TabArea>
+           <TabItem onPress={()=>{goTo('Profile')}} >
+                <ProfileIcon style={{opacity: state.index===0?1:0.7}} width="24" height="24"/>
+           </TabItem>
+           <TabItemCenter onPress={()=>{goTo('HomeStack')}}>
+                <ScheduleIcon width="40" height="40"/>
+           </TabItemCenter>
+           <TabItem onPress={()=>{goTo('Options')}}>
+                <ConfigIcon style={{opacity: state.index===2?1:0.7}} width="24" height="24"/>
+           </TabItem>
+       </TabArea> 
     ); 
 }; 
 
-const TabBarArea = styled.SafeAreaView`
-    flex-direction:row; 
+const TabArea = styled.View`
+    height:60px; 
     background-color:#003366; 
+    flex-direction:row; 
 `; 
-const TabBarItem = styled.View`
+
+const TabItem = styled.TouchableOpacity`
     flex:1; 
-    height:65px; 
+    justify-content:center;
     align-items:center;
-
 `; 
-const TabRegular = styled.TouchableHighlight`
-    align-items:center;
-`;
 
-const TabIconArea = styled.TouchableHighlight`
+const TabItemCenter = styled.TouchableOpacity`
     width:70px; 
     height:70px; 
-    background-color:#003366; 
-    border-radius:55px; 
-    justify-content:center; 
+    justify-content:center;
     align-items:center;
-    border:4px solid #fff; 
-    margin-top:-40px; 
+    background-color:#fff; 
+    border-radius:35px;
+    border:4px solid #ddd;
+    margin-top:-35px;
 `; 
-const TabIcon = styled.View`
-    
-`;  
-const Text = styled.Text`
-    /* font-weight:bold;  */
-    color:#fff;
-`; 
-const TabIconView = styled.View`
-    margin-top:10px; 
-    margin-bottom:5px; 
-`; 
-
 
 export default CustomTabBar; 

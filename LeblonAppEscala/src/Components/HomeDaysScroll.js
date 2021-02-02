@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'; 
-import { Dimensions } from 'react-native'; 
 import styled from 'styled-components/native'; 
 
 
@@ -34,11 +33,12 @@ const HomeDaysScroll = ( props ) => {
 
 const WeekDaysArea = styled.View`
     width:100%;
-    /* background-color:black; */
+    background-color:white;
     flex-direction:row;
     justify-content:center;
     align-items:center;
-    margin-top:10px;
+    padding-top:10px;
+    padding-bottom:5px;
    
 `;
 const WeekDays = styled.TouchableHighlight`

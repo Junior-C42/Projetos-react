@@ -67,7 +67,7 @@ const HomeMonthScroll = ( props ) => {
         >
             {months.map((m, k)=>(
                 <MonthButton key={k} width={thirdW} onPress={()=>setSelectedMonth(k)} underlayColor="transparent" >
-                    <MonthItem style={k==selectedMonth?{
+                    <MonthItem style={k == selectedMonth?{
                         backgroundColor:'#003366',
                         width:'100%', 
                         height:40
